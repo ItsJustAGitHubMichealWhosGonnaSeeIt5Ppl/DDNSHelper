@@ -1,2 +1,3 @@
 # requirements.txt
 requests==2.32.5
+porkbun-api @ git+https://github.com/ItsJustAGitHubMichealWhosGonnaSeeIt5Ppl/porkbun-api@rewrite
