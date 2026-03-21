@@ -26,9 +26,9 @@ Registrars that I cannot support (but have tried)
 2. (optional) Set up a virtual environment
 3. Install requirements with `pip install -r constraints.txt`
 4. Set up your API credentials in a `.env` file
-5. Run `ddnshelper.py <Registratr> <Domain>` (can be used with cronjob)
+5. Update `job.sh` with the correct paths and create a cronjob to run the script
 
-### Registar specific set up
+### Registrar specific set up
 
 #### Porkbun
 
@@ -42,7 +42,7 @@ You need an API key for Porkbun. See instructions below
 
 ## FAQ
 
-(No one has asked me anything so I'm just guessing what might be asked)
+(No one has asked me anything, so I'm just guessing what might be asked)
 
 Q: Will you add support for _ registar?  
 A: If they are not on the list of unsupported registrars, I'd be happy to try! Submit a feature request with the registrar name.
