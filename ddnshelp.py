@@ -7,7 +7,6 @@ import sys
 #TODO logging of some kind
 
 # EXTERNAL
-import requests
 from porkbun_api import Porkbun
 
 # INTERNAL
@@ -18,6 +17,7 @@ debug = False # Use to disable args and instead input manual data
 if debug:
     registrar = "porkbun"
     domain = "fakedomain.com"
+    
 else: # Normal run mode
     if len(sys.argv) != 3:
         raise ValueError(f"Incorrect amount of arguments supplied. Expecting 2, got {str(len(sys.argv)-1)}")
@@ -30,8 +30,11 @@ if registrar.lower() not in supported_registrars:
     raise ValueError(f"Registrar '{registrar}' is not currently supported.")
 
 if registrar.lower() == "porkbun": # Porkbun setup
-    API_KEY = getenv("PORKBUN_KEY")
-    API_SECRET = getenv("PORKBUN_SECRET")
+    API_KEY = getenv("PORKBUN_KEY", None)
+    API_SECRET = getenv("PORKBUN_SECRET", None)
+    if API_KEY == None or API_SECRET == None:
+        raise Exception("Missing API key or secret")
+    
     pb = Porkbun(API_KEY, API_SECRET)
     
     
@@ -43,6 +46,7 @@ if registrar.lower() == "porkbun": # Porkbun setup
     
     if record['content'] == ip: # IP is already up to date, no changes are needed :)
         print("No update needed")
+        
     else: # Not the same, update!
         pb.dns.update_record(domain=".".join(domain_split[1:]), record_id=record['id'], content=ip, name=domain_split[0], record_type=record['type'], ttl=record['ttl'], priority=record['prio'], notes=record['notes'])
         print("Updated")
