@@ -20,29 +20,25 @@ Registrars that I cannot support (but have tried)
 
 - namecheap (Requires whitelisted IP to authorize requests)
 
-### Setup and usage
+## Setup and usage
+
 1. Download `ddnshelp.py` and `constraints.txt`
-2. Install requirements with `pip install -r constraints.txt`
-3. Set up your API credentials in a `.env file`
-4. Run `ddnshelp.py <Registratr> <Domain>` (can be used with cronjob)
+2. (optional) Set up a virtual environment
+3. Install requirements with `pip install -r constraints.txt`
+4. Set up your API credentials in a `.env` file
+5. Run `ddnshelper.py <Registratr> <Domain>` (can be used with cronjob)
 
-
-
-
-## Setup
-
-### Registar specifc
+### Registar specific set up
 
 #### Porkbun
+
+You need an API key for Porkbun. See instructions below
 
 1. Create API credentials here: https://porkbun.com/account/api
 2. Enable API access for domain(s)
     - A: Enable for all domains (not recommended)
     - B: Selectively enable API access for desired domains (recommended)
-
-### General
-
-
+3. Update `PORKBUN_KEY` and `PORKBUN_SECRET` variables in the `.env` file
 
 ## FAQ
 
