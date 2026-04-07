@@ -48,7 +48,8 @@ def update_ddns(registrar:str, domain:str):
         
         # THE ACTUAL SCRIPT PART
         logger.info("Getting current IP")
-        ip = pb.ping().yourIp
+        ip_raw = pb.ping()
+        ip = ip_raw.yourIp
         #TODO support subdomains with multiple "." Currently the domain worker.team.mydomain.com would not work
         domain_split = domain.split(".") # Split up the domain 
         
